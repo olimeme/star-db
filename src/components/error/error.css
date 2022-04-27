@@ -1,0 +1,12 @@
+.error-block {
+    height: 200px;
+    margin: 0 auto;
+    border-radius: 10px;
+    padding-top: 30px;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.error-block h4, p {
+    color: brown;
+}

@@ -1,21 +1,25 @@
-import React from 'react';
-import './header.css';
+import React from "react";
+import "./header.css";
 
 const Header = () => {
   return (
-    <div className="header">
-      <nav>
-        <div className="logo">
-          <h1>StarDB</h1>
-        </div>
-        <ul>
-          <li><a href="#">Planet</a></li>
-          <li><a href="#">People</a></li>
-          <li><a href="#">Starship</a></li>
-        </ul>
-      </nav>
+    <div className="header d-flex">
+      <h3>
+        <a href="#">Star DB</a>
+      </h3>
+      <ul className="d-flex">
+        <li>
+          <a href="#">People</a>
+        </li>
+        <li>
+          <a href="#">Planets</a>
+        </li>
+        <li>
+          <a href="#">Starships</a>
+        </li>
+      </ul>
     </div>
-  )
-}
+  );
+};
 
 export default Header;
