@@ -5,33 +5,18 @@ import PersonDetails from "../person-details";
 import PlanetDetails from "../planet-details";
 import StarshipDetails from "../starship-details";
 import RandomPlanet from "../random-planet";
-
+import PeoplePage from "../people-page";
 import "./app.css";
 
 export default class App extends Component {
-  state = {
-    selectedPerson: null,
-  };
-
-  onPersonSelected = (id) => {
-    this.setState({ selectedPerson: id });
-  };
-
   render() {
-    const { selectedPerson } = this.state;
     return (
       <div>
         <Header />
         <RandomPlanet />
-
-        <div className="row mb2">
-          <div className="col-md-6">
-            <ItemList onPersonSelected={this.onPersonSelected} />
-          </div>
-          <div className="col-md-6">
-            <PersonDetails personId={selectedPerson} />
-          </div>
-        </div>
+        <PeoplePage />
+        <PeoplePage />
+        <PeoplePage />
       </div>
     );
   }
