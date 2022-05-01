@@ -11,7 +11,7 @@ export default class ItemList extends Component {
   };
 
   componentDidMount() {
-    const {getData} = this.props;
+    const { getData } = this.props;
     getData().then((itemList) => {
       this.setState({ itemList });
     });
@@ -19,7 +19,7 @@ export default class ItemList extends Component {
 
   renderItems = (arr) => {
     return arr.map((item) => {
-      const {id} = item;
+      const { id } = item;
       const label = this.props.renderItem(item);
       return (
         <li
