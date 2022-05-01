@@ -40,7 +40,9 @@ export default class PeoplePage extends Component {
 
     const personDetails = <PersonDetails personId={selectedPerson} />;
 
-    return (
+    return hasError ? (
+      <Error />
+    ) : (
       <ErrorBoundry>
         <Row left={itemList} right={personDetails} />
       </ErrorBoundry>
