@@ -1,9 +1,10 @@
 import React, { Component } from "react";
 import ItemList from "../item-list";
-import PersonDetails from "../person-details";
+import ItemDetails from "../item-details";
 import Error from "../error";
 import Row from "../row";
 import ErrorBoundry from "../error-boundry";
+
 import "./people-page.css";
 import SwapiService from "../../services/swapi-service";
 
@@ -38,13 +39,18 @@ export default class PeoplePage extends Component {
       />
     );
 
-    const personDetails = <PersonDetails personId={selectedPerson} />;
+    const itemDetails = (
+      <ItemDetails
+        itemId={selectedPerson}
+        getDataById={this.swapiService.getPersonById}
+      />
+    );
 
     return hasError ? (
       <Error />
     ) : (
       <ErrorBoundry>
-        <Row left={itemList} right={personDetails} />
+        <Row left={itemList} right={itemDetails} />
       </ErrorBoundry>
     );
   }
