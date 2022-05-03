@@ -5,37 +5,37 @@ export default class SwapiService {
     const res = await fetch(`${this.api}${url}`);
     if (!res.ok) throw new Error("Could not receive the message");
     return await res.json();
-  }
+  };
 
   getAllPeople = async () => {
     const people = await this.getRequest(`/people/`);
     return people.results.map(this._transformPerson);
-  }
+  };
 
   getPersonById = async (id) => {
     const person = await this.getRequest(`/people/${id}/`);
     return this._transformPerson(person);
-  }
+  };
 
   getAllPlanets = async () => {
     const planet = await this.getRequest(`/planets/`);
     return planet.results.map(this._transformPlanet);
-  }
+  };
 
   getPlanetById = async (id) => {
     const planet = await this.getRequest(`/planets/${id}/`);
     return this._transformPlanet(planet);
-  }
+  };
 
   getAllStarships = async () => {
     const starship = await this.getRequest(`/starships/`);
-    return starship.results.map(this._transformStarhip);
-  }
+    return starship.results.map(this._transformStarship);
+  };
 
   getStarshipById = async (id) => {
     const starship = await this.getRequest(`/starships/${id}`);
     return this._transformStarhip(starship);
-  }
+  };
 
   _extractId = (item) => {
     const idRegExp = /\/([0-9]*)\/$/;
@@ -52,7 +52,7 @@ export default class SwapiService {
     };
   };
 
-  _transformStarhip = (starship) => {
+  _transformStarship = (starship) => {
     return {
       id: this._extractId(starship),
       name: starship.name,

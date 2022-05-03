@@ -4,6 +4,15 @@ import Spinner from "../spinner";
 
 import "./item-details.css";
 
+export const Record = ({ item, field, label }) => {
+  return (
+    <li className="list-group-item">
+      <span className="term">{label}</span>
+      <span>{item[field]}</span>
+    </li>
+  );
+};
+
 export default class ItemDetails extends Component {
   swapiService = new SwapiService();
 
@@ -33,7 +42,8 @@ export default class ItemDetails extends Component {
 
   render() {
     if (!this.state.item) return <span>Select a person!</span>;
-    const { id, name, gender, birthYear, eyeColor } = this.state.item;
+    const { item } = this.state;
+    const { id, name } = item;
     const { getItemImageById } = this.props;
     return this.state.loading ? (
       <Spinner message="Loading..." />
@@ -43,18 +53,9 @@ export default class ItemDetails extends Component {
         <div className="card-body">
           <h4>{name}</h4>
           <ul className="list-group list-group-flush">
-            <li className="list-group-item">
-              <span className="term">Gender</span>
-              <span>{gender}</span>
-            </li>
-            <li className="list-group-item">
-              <span className="term">Birth Year</span>
-              <span>{birthYear}</span>
-            </li>
-            <li className="list-group-item">
-              <span className="term">Eye Color</span>
-              <span>{eyeColor}</span>
-            </li>
+            {React.Children.map(this.props.children, (child) => {
+              return React.cloneElement(child, { item });
+            })}
           </ul>
         </div>
       </div>

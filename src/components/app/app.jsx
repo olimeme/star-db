@@ -5,7 +5,7 @@ import Row from "../row";
 import ErrorBoundry from "../error-boundry";
 import Error from "../error";
 import ItemList from "../item-list";
-import ItemDetails from "../item-details";
+import ItemDetails, { Record } from "../item-details";
 
 import SwapiService from "../../services/swapi-service";
 import "./app.css";
@@ -65,7 +65,37 @@ export default class App extends Component {
         itemId={selectedPerson}
         getDataById={this.swapiService.getPersonById}
         getItemImageById={getPersonImageById}
-      />
+      >
+        <Record field="gender" label="Gender" />
+        <Record field="birthYear" label="Birth Year" />
+        <Record field="eyeColor" label="Eye Color" />
+      </ItemDetails>
+    );
+
+    const planetDetails = (
+      <ItemDetails
+        itemId={selectedPlanet}
+        getDataById={this.swapiService.getPlanetById}
+        getItemImageById={getPlanetImageById}
+      >
+        <Record field="population" label="Population" />
+        <Record field="rotation_period" label="Rotation Period" />
+        <Record field="diameter" label="Diameter" />
+      </ItemDetails>
+    );
+
+    const starshipDetails = (
+      <ItemDetails
+        itemId={selectedStarship}
+        getDataById={this.swapiService.getStarshipById}
+        getItemImageById={getStarshipImageById}
+      >
+        <Record field="model" label="Model" />
+        <Record field="manufacturer" label="Manufacturer" />
+        <Record field="costInCredits" label="Cost in Credits" />
+        <Record field="length" label="Length" />
+        <Record field="crew" label="Crew" />
+      </ItemDetails>
     );
 
     return hasError ? (
