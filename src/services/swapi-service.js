@@ -34,7 +34,19 @@ export default class SwapiService {
 
   getStarshipById = async (id) => {
     const starship = await this.getRequest(`/starships/${id}`);
-    return this._transformStarhip(starship);
+    return this._transformStarship(starship);
+  };
+
+  getPersonImageById = (id) => {
+    return `https://starwars-visualguide.com/assets/img/characters/${id}.jpg`;
+  };
+
+  getPlanetImageById = (id) => {
+    return `https://starwars-visualguide.com/assets/img/planets/${id}.jpg`;
+  };
+
+  getStarshipImageById = (id) => {
+    return `https://starwars-visualguide.com/assets/img/starships/${id}.jpg`;
   };
 
   _extractId = (item) => {
