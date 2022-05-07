@@ -58,10 +58,10 @@ export default class App extends Component {
             <Header />
             <RandomPlanet />
             <PersonList />
-            <PlanetList />
-            <StarshipList />
             <PersonDetails itemId={5} />
+            <PlanetList />
             <PlanetDetails itemId={11} />
+            <StarshipList />
             <StarshipDetails itemId={9} />
           </div>
         </SwapiServiceProvider>
