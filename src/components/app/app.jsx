@@ -14,6 +14,7 @@ import {
   PlanetDetails,
   StarshipDetails,
 } from "../sw-components";
+import { SwapiServiceProvider } from "../swapi-service-context";
 
 import SwapiService from "../../services/swapi-service";
 import "./app.css";
@@ -48,28 +49,22 @@ export default class App extends Component {
     const { selectedPerson, selectedPlanet, selectedStarship, hasError } =
       this.state;
 
-    const peopleList = (
-      <ItemList
-        onItemSelected={this.onPersonSelected}
-        getData={this.swapiService.getAllPeople}
-      >
-        {(item) => `${item.name} (${item.birthYear})`}
-      </ItemList>
-    );
     return hasError ? (
       <Error />
     ) : (
       <ErrorBoundry>
-        <div>
-          <Header />
-          <RandomPlanet />
-          {/* <PersonList>
-            {(item) => `${item.name} (${item.birthYear})`}
-          </PersonList> */}
-          <PersonDetails itemId={5} />
-          <PlanetDetails itemId={11} />
-          <StarshipDetails itemId={9} />
-        </div>
+        <SwapiServiceProvider value={this.swapiService}>
+          <div>
+            <Header />
+            <RandomPlanet />
+            <PersonList />
+            <PlanetList />
+            <StarshipList />
+            <PersonDetails itemId={5} />
+            <PlanetDetails itemId={11} />
+            <StarshipDetails itemId={9} />
+          </div>
+        </SwapiServiceProvider>
       </ErrorBoundry>
     );
   }
