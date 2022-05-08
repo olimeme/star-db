@@ -4,16 +4,7 @@ import RandomPlanet from "../random-planet";
 import Row from "../row";
 import ErrorBoundry from "../error-boundry";
 import Error from "../error";
-import ItemList from "../item-list";
-import ItemDetails, { Record } from "../item-details";
-import {
-  PersonList,
-  PlanetList,
-  StarshipList,
-  PersonDetails,
-  PlanetDetails,
-  StarshipDetails,
-} from "../sw-components";
+import { PeoplePage, PlanetPage, StarshipPage } from "../pages";
 import { SwapiServiceProvider } from "../swapi-service-context";
 
 import SwapiService from "../../services/swapi-service";
@@ -23,22 +14,7 @@ export default class App extends Component {
   swapiService = new SwapiService();
 
   state = {
-    selectedPerson: null,
-    selectedStarship: null,
-    selectedPlanet: null,
     hasError: false,
-  };
-
-  onPersonSelected = (id) => {
-    this.setState({ selectedPerson: id });
-  };
-
-  onPlanetSelected = (id) => {
-    this.setState({ selectedPlanet: id });
-  };
-
-  onStarshipSelected = (id) => {
-    this.setState({ selectedStarship: id });
   };
 
   componentDidCatch(error, info) {
@@ -46,8 +22,7 @@ export default class App extends Component {
   }
 
   render() {
-    const { selectedPerson, selectedPlanet, selectedStarship, hasError } =
-      this.state;
+    const { hasError } = this.state;
 
     return hasError ? (
       <Error />
@@ -57,12 +32,9 @@ export default class App extends Component {
           <div>
             <Header />
             <RandomPlanet />
-            <PersonList />
-            <PersonDetails itemId={5} />
-            <PlanetList />
-            <PlanetDetails itemId={11} />
-            <StarshipList />
-            <StarshipDetails itemId={9} />
+            <PeoplePage />
+            <PlanetPage />
+            <StarshipPage />
           </div>
         </SwapiServiceProvider>
       </ErrorBoundry>

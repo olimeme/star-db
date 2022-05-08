@@ -13,7 +13,6 @@ const ItemList = (props) => {
         onClick={() => onItemSelected(id)}
       >
         {label}
-        {console.log(props)}
       </li>
     );
   });
